@@ -3,6 +3,9 @@ package service;
 import org.junit.Test;
 import reader.ReadAddresses;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import static model.Gender.FEMALE;
 import static model.Gender.MALE;
 import static org.junit.Assert.*;
@@ -10,7 +13,7 @@ import static org.junit.Assert.*;
 public class PersonServiceTest {
 
     @Test
-    public void genderCountReturnsZeroWhenAddressBookIsEmpty()  {
+    public void genderCountReturnsZeroWhenAddressBookIsEmpty() throws IOException, URISyntaxException {
         ReadAddresses readAddresses = new ReadAddresses("EmptyAddressBook");
         PersonService personService = new PersonService(readAddresses);
 
@@ -18,7 +21,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void genderCountReturnsZeroWhenNoFemalesInAddressBook() {
+    public void genderCountReturnsZeroWhenNoFemalesInAddressBook() throws IOException, URISyntaxException {
         ReadAddresses readAddresses = new ReadAddresses("MaleAddressBook");
         PersonService personService = new PersonService(readAddresses);
 
@@ -26,7 +29,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void genderCountReturnsFiveWhen5MaleExistInAddressBook() {
+    public void genderCountReturnsFiveWhen5MaleExistInAddressBook() throws IOException, URISyntaxException {
         ReadAddresses readAddresses = new ReadAddresses("MaleAddressBook");
         PersonService personService = new PersonService(readAddresses);
 
