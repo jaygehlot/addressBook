@@ -30,10 +30,23 @@ public class PersonServiceTest {
 
     @Test
     public void genderCountReturnsFiveWhen5MaleExistInAddressBook() throws IOException, URISyntaxException {
-        ReadAddresses readAddresses = new ReadAddresses("MaleAddressBook");
+        ReadAddresses readAddresses = new ReadAddresses("MixedGenderAddressBook");
         PersonService personService = new PersonService(readAddresses);
 
         assertEquals(5, personService.getGenderCount(MALE));
+    }
+
+    @Test
+    public void eldestPersonInAddressBookIsReturnedWithOneAsOldestExisting() throws IOException, URISyntaxException {
+        ReadAddresses readAddresses = new ReadAddresses("MixedGenderAddressBook");
+        PersonService personService = new PersonService(readAddresses);
+
+        assertEquals("Richard Espley", personService.fetchEldestPerson().getName());
+    }
+
+    @Test
+    public void eldestPersonInAddressInAddressBookIsReturnedMultipleEldest() {
+
     }
 
 }
