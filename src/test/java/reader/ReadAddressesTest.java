@@ -1,5 +1,6 @@
 package reader;
 
+import exception.ReadAddressesException;
 import model.Person;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,6 @@ public class ReadAddressesTest {
 
     @Test
     public void readPeopleFromAddressBook() {
-
         List<Person> expectedListOfPeople = Arrays.asList(new Person("Jose Mourinho", MALE, LocalDate.of(1970, MARCH, 16)),
                 new Person("Paul Pogba", MALE, LocalDate.of(1991, JANUARY, 15)));
 
@@ -41,5 +41,10 @@ public class ReadAddressesTest {
     @Test
     public void readEmptyAddressBook() {
         assertEquals(Collections.emptyList(), emptyAddress.getPeopleAddress());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void readNonExistentAddressBook() {
+        new ReadAddresses("TestingAddressBook");
     }
 }

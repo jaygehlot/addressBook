@@ -1,5 +1,6 @@
 package reader;
 
+import exception.ReadAddressesException;
 import model.Gender;
 import model.Person;
 
@@ -27,7 +28,7 @@ public class ReadAddresses {
         try {
             readAddressBook();
         } catch (URISyntaxException | IOException e) {
-            throw new RuntimeException(e);
+            throw new ReadAddressesException(e.getMessage());
         }
     }
 
