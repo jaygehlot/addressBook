@@ -13,10 +13,10 @@ public class MainApp {
         PersonService personAgeService = new PersonService(readAddresses);
 
         //1st problem
-        System.out.println("Gender count for Male is: " + personAgeService.getGenderCount(Gender.MALE));
+        System.out.println("Gender count for Male is: " + personAgeService.fetchGenderCount(Gender.MALE));
 
         /* 2nd problem */
-        System.out.println("Eldest person in address list is " + personAgeService.fetchEldestPerson().getName());
+        System.out.println("Eldest person in address list is " + personAgeService.fetchEldestPerson().get(0));
     }
 
 }
