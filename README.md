@@ -1,4 +1,4 @@
-#AddressBookReader Application
+# AddressBookReader Application
 
 The AddressBookReader is responsible for reading an AddressBook. The AddressBook
 has an API which allows it to determine things like the number of a particular gender 
@@ -18,7 +18,7 @@ about how to handle people with the same birth date in the address book.
 * JAVA_HOME env-var should be setup correctly on the Path
 * MAVEN_HOME env-var should be setup correctly on the Path
 
-###Run main app:
+### Run main app:
 
 
-###Run tests:
+### Run tests:
