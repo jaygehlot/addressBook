@@ -19,6 +19,12 @@ about how to handle people with the same birth date in the address book.
 * MAVEN_HOME env-var should be setup correctly on the Path
 
 ### Run main app:
+To run the main application, there exists a MainApp class with can be run to 
+exercise the functionality implemented. This is a very simple Main class which 
+prints the output.
 
-
-### Run tests:
+### Run unit tests:
+To run all unit test, execute the following command from the root of the project
+```
+mvn clean test
+```

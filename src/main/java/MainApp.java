@@ -16,7 +16,7 @@ public class MainApp {
         System.out.println("Gender count for Male is: " + personAgeService.fetchGenderCount(Gender.MALE));
 
         /* 2nd problem */
-        System.out.println("Eldest person in address list is " + personAgeService.fetchEldestPerson().get(0));
+        System.out.println("Eldest person in address list is " + personAgeService.fetchEldestPerson().get(0).getName());
     }
 
 }

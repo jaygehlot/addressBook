@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
 
@@ -29,14 +30,17 @@ public class PersonService {
      */
     public List<Person> fetchEldestPerson() throws IOException, URISyntaxException {
 
-        List<Person> eldestFirstSortedList = getAddressBook()
+        final List<Person> eldestFirstSortedList = getAddressBook()
                 .stream()
                 .sorted(Comparator.comparing(Person::getLocalDate))
                 .filter(person -> person.getLocalDate().isEqual(person.getLocalDate()))
                 .collect(toList());
 
+        final Predicate<Person> peopleWithSameBirthDate = person -> person.getLocalDate()
+                                                        .equals(eldestFirstSortedList.get(0).getLocalDate());
+
         return eldestFirstSortedList.stream().
-                filter(person -> person.getLocalDate().equals(eldestFirstSortedList.get(0).getLocalDate()))
+                filter(peopleWithSameBirthDate)
                 .collect(toList());
     }
 
@@ -55,6 +59,11 @@ public class PersonService {
         return genderCount.intValue();
     }
 
+    /**
+     * Get address book contents
+     * @return a list of Persons in the address book or an empty list
+     * if address book is empty
+     */
     private List<Person> getAddressBook() {
         return readAddresses.getPeopleAddress();
     }

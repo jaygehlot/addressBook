@@ -56,7 +56,10 @@ public class PersonServiceTest {
         PersonService personService = new PersonService(readAddresses);
 
         List<String> expectedNames = Arrays.asList("Romelu Lukaku", "Mohan Gehlot", "Richard Espley");
-        List<String> actualdNames = personService.fetchEldestPerson().stream().map(Person::getName).collect(toList());
+        List<String> actualdNames = personService.fetchEldestPerson()
+                                        .stream()
+                                        .map(Person::getName)
+                                        .collect(toList());
 
         assertEquals(expectedNames, actualdNames);
     }
@@ -66,7 +69,10 @@ public class PersonServiceTest {
         ReadAddresses readAddresses = new ReadAddresses("EmptyAddressBook");
         PersonService personService = new PersonService(readAddresses);
 
-        List<String> actualdNames = personService.fetchEldestPerson().stream().map(Person::getName).collect(toList());
+        List<String> actualdNames = personService.fetchEldestPerson()
+                                        .stream()
+                                        .map(Person::getName)
+                                        .collect(toList());
 
         assertEquals(emptyList(), actualdNames);
     }

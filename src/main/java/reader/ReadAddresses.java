@@ -36,6 +36,13 @@ public class ReadAddresses {
         return peopleAddress;
     }
 
+    /**
+     * Reads the address book and parses the information in it.
+     * Assumes a particular date format and order of added information i.e. Person, Gender, DOB
+     * @return
+     * @throws URISyntaxException
+     * @throws IOException
+     */
     private List<Person> readAddressBook() throws URISyntaxException, IOException {
         final List<String> addressBookPeople = new ArrayList<>();
 
@@ -48,7 +55,7 @@ public class ReadAddresses {
                 .appendValueReduced(ChronoField.YEAR, 2, 2, 1900)
                 .toFormatter();
 
-        List<Person> addressListOfPeople = addressBookPeople.stream()
+        final List<Person> addressListOfPeople = addressBookPeople.stream()
                 .map(s -> s.split(", "))
                 .map(array -> new Person(array[0], Gender.valueOf(array[1].toUpperCase()), LocalDate.parse(array[2], format)))
                 .collect(toList());
